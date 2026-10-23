@@ -1,1 +1,40 @@
 @import "tailwindcss";
+
+.right-marquee {
+  overflow: hidden;
+}
+
+.right-marquee__track {
+  display: flex;
+  width: max-content;
+  height: 100%;
+  animation: right-marquee-scroll 30s linear infinite;
+}
+
+.right-marquee__group {
+  display: flex;
+  flex: none;
+  height: 100%;
+  gap: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.right-marquee:hover .right-marquee__track {
+  animation-play-state: paused;
+}
+
+@keyframes right-marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .right-marquee {
+    overflow-x: auto;
+  }
+
+  .right-marquee__track {
+    animation: none;
+  }
+}

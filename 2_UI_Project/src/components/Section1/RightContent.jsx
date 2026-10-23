@@ -1,9 +1,30 @@
-import React from 'react'
+import React from "react";
+import RightCard from "./RightCard";
 
-const RightContent = () => {
+const RightContent = (props) => {
   return (
-    <div className='h-full w-2/3 bg-blue-600'>RightContent</div>
-  )
-}
+    <div id="right" className="right-marquee h-full w-2/3 p-6">
+      <div className="right-marquee__track">
+        {[false, true].map((isDuplicate) => (
+          <div
+            className="right-marquee__group"
+            key={isDuplicate ? "duplicate" : "original"}
+            aria-hidden={isDuplicate || undefined}
+          >
+            {props.users.map((elem, idx) => (
+              <RightCard
+                key={idx}
+                color={elem.color}
+                id={idx}
+                img={elem.img}
+                tag={elem.tag}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
-export default RightContent
+export default RightContent;
