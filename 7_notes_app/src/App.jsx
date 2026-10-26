@@ -1,30 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 
 const App = () => {
+
+  const [title, settitle] = useState("")
+  const [description, setdescription] = useState("")
+
   const submitHandler = (e) => {
     e.preventDefault();
     console.log("Form submitted");
+    console.log(title)
+    console.log(description)
+    settitle("")
+    setdescription("")
   };
+
+  
 
   return (
     <div className="h-screen lg:flex bg-black color-white text-white">
       <form onSubmit={(e)=>{
           submitHandler(e);
         }}
-        className="flex p-10 items-center flex-col gap-5 lg:w-1/3"
-      >
-      <h1 className="text-3xl font-bold">Add Notes</h1>
+        className="flex p-10 items-center flex-col gap-5 lg:w-1/3">
+        
+        <h1 className="text-3xl font-bold">Add Notes</h1>
 
+          {/* First input for heading */}
           <input
             type="text"
             placeholder="Enter Task Heading"
-            className="px-5 py-2 border-2 rounded w-full outline-none"
+          className="px-5 py-2 border-2 rounded w-full outline-none"
+          value={title}
+          onChange={(e) => {
+            settitle(e.target.value)
+          }}
           />
-
+          
+          {/* Detailed input for description */}
           <textarea
             type="text"
             className="px-5 h-40 py-2 border-2 rounded outline-none w-full"
-            placeholder="Enter Details"
+          placeholder="Enter Details"
+          value={description}
+          onChange={(e) => {
+            setdescription(e.target.value)
+          }}
           />
 
           <button className="bg-white text-black px-5 py-2 rounded outline-none w-full">
