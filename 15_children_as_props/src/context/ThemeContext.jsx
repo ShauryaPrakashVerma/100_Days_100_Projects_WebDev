@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { createContext } from "react";
 
-const ThemeContext = () => {
+export const ThemeDataContext = createContext();
+
+const ThemeContext = (props) => {
   return (
-    <div>ThemeContext</div>
-  )
-}
+    <div>
+      <ThemeDataContext.Provider value="Shaurya">{props.children}</ThemeDataContext.Provider>
+    </div>
+  );
+};
 
-export default ThemeContext
+export default ThemeContext;

@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Nav2 from "./Nav2";
+import { ThemeDataContext } from "../context/ThemeContext";
 
 const Navbar = (props) => {
-  console.log(props);
+
+  const data = useContext(ThemeDataContext)
+  console.log(data);
   return (
     <div>
       <Nav2 theme={props.theme}>
@@ -10,6 +13,8 @@ const Navbar = (props) => {
       </Nav2>
       {props.children[0]}
       {props.children[1]}
+
+      <h1>{ data}</h1>
     </div>
   );
 };
