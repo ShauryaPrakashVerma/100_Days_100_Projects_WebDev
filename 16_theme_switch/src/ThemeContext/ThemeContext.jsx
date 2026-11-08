@@ -1,16 +1,16 @@
-import React, { createContext } from 'react'
-import { ThemeDataContext } from '../../../15_children_as_props/src/context/ThemeContext'
+import React from "react";
+import ThemeContext from "./context";
 
+const ThemeProvider = ({ theme, setTheme, children }) => {
+  const changeTheme = () => {
+    setTheme((currentTheme) => (currentTheme === "light" ? "dark" : "light"));
+  };
 
-
-const ThemeProvider = (props) => {
   return (
-      <div>
-      <ThemeDataContext.Provider>
-        {props.children}
-      </ThemeDataContext.Provider>
-    </div>
-  )
-}
+    <ThemeContext.Provider value={{ theme, changeTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
 
-export default ThemeProvider
+export default ThemeProvider;
