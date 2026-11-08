@@ -1,12 +1,14 @@
-import React from 'react'
-import { SunMoon } from 'lucide-react';
+import React from "react";
+import { SunMoon } from "lucide-react";
 
 const ThemeToggle = () => {
   return (
-      <div className='active:scale-120'>
-          <SunMoon/>
+    <div className="active:scale-120">
+      <button onClick="">
+        <SunMoon />
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default ThemeToggle
+export default ThemeToggle;
